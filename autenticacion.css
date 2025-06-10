@@ -1,0 +1,355 @@
+/* Variables y reset */
+:root {
+  --primary-color: #3a4f41;
+  --secondary-color: #1d3b2a;
+  --background-color: #fdf6e3;
+  --card-color: #fff9ec;
+  --text-color: #2e3b2e;
+  --muted-text: #657786;
+  --border-color: #e6ecf0;
+  --error-color: #b47d84;
+}
+
+/* Dark mode */
+body.dark-mode {
+  --primary-color: #b8e1dd;
+  --secondary-color: #5ad2c2;
+  --background-color: #1a2327;
+  --card-color: #232d33;
+  --text-color: #e6ecf0;
+  --muted-text: #8fa1b3;
+  --border-color: #2c3a41;
+  --error-color: #e57373;
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+body.dark-mode .sidebar,
+body.dark-mode .main-content,
+body.dark-mode .topbar,
+body.dark-mode .formulario-iniciosesion {
+  background: var(--card-color);
+  color: var(--text-color);
+}
+
+body.dark-mode .nav-link,
+body.dark-mode .nav-link:hover {
+  color: var(--text-color);
+}
+
+body.dark-mode .nav-link:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+body.dark-mode .profile-pic {
+  border-color: var(--secondary-color);
+}
+
+body.dark-mode .formulario-iniciosesion h1 {
+  color: var(--secondary-color);
+}
+
+body.dark-mode .formulario-iniciosesion a {
+  color: var(--muted-text);
+}
+
+body.dark-mode .formulario-iniciosesion a:hover {
+  color: var(--primary-color);
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+  background: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  min-height: 100vh;
+  line-height: 1.5;
+  
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 100%;
+  background: var(--card-color);
+  padding: 1rem 0;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.08);
+  border-right: 1px solid var(--border-color);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+}
+
+.sidebar.sidebar-open {
+  width: 220px;
+}
+
+.sidebar-toggle {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1100;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+  background: var(--secondary-color);
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0 0.5rem;
+}
+
+.profile-pic {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--secondary-color);
+}
+
+.profile-info {
+  display: none;
+  width: 100%;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.sidebar.sidebar-open .profile-info {
+  display: block;
+}
+
+.profile-info span {
+  display: block;
+}
+
+.profile-info button {
+  background: none;
+  border: none;
+  color: var(--secondary-color);
+  cursor: pointer;
+  margin: 0.25rem;
+  font-size: 1rem;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: background 0.2s ease;
+  border-radius: 0.5rem;
+  margin: 0.25rem 0.5rem;
+}
+
+.nav-link:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.nav-icon {
+  font-size: 1.25rem;
+  margin-right: 0.75rem;
+}
+
+.nav-label {
+  display: none;
+}
+
+.sidebar.sidebar-open .nav-label {
+  display: inline;
+}
+
+
+
+
+section{
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 12px;
+    background-color: #f0f0f0;
+}
+.formulario-iniciosesion{
+  padding-top: 45px;
+  padding-bottom: 60px;
+}
+.formulario-crearcuenta{
+  padding-top: 45px;
+  padding-bottom: 60px;
+}
+.formulario-iniciosesion h1{
+text-align: center;
+padding-bottom: 12px;
+}
+.formulario-crearcuenta h1{
+  text-align: center;
+  padding-bottom: 12px;
+  }
+.formulario-iniciosesion a {
+  display: block;
+  text-align: center; /* Añade esta propiedad para alinear el enlace al centro */
+  margin-top: 20px;
+  color: #555;
+}
+.formulario-crearcuenta a {
+  display: block;
+  text-align: center; /* Añade esta propiedad para alinear el enlace al centro */
+  margin-top: 20px;
+  color: #555;
+}
+/* Estilos para el formulario */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  height: 320px;
+}
+
+/* Estilos para los campos de entrada */
+input[type=email], input[type=password] {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+/* Estilos para el botón de envío */
+input[type=submit] {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  float: right;
+}
+
+/* Estilos para el botón de envío al pasar el ratón por encima */
+input[type=submit]:hover {
+  background-color: #0372e9;
+}
+
+/* Ajuste para main-content para que se desplace cuando sidebar está abierto */
+body > .main-content {
+  margin-left: 70px;
+  transition: margin-left 0.3s;
+  width: 100%;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Cuando la barra lateral está abierta, desplaza el main-content */
+body .sidebar.sidebar-open ~ .main-content {
+  margin-left: 220px;
+}
+
+/* Unifica estilos para formularios de login y signup */
+.formulario-iniciosesion,
+.formulario-crearcuenta {
+  width: 100%;
+  max-width: 400px;
+  margin: 2rem auto 0 auto;
+  background: var(--card-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 2rem 1.5rem 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formulario-iniciosesion h1,
+.formulario-crearcuenta h1 {
+  text-align: center;
+  padding-bottom: 12px;
+  color: var(--secondary-color);
+}
+
+.formulario-iniciosesion a,
+.formulario-crearcuenta a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: var(--muted-text);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.formulario-iniciosesion a:hover,
+.formulario-crearcuenta a:hover {
+  text-decoration: underline;
+  color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 0;
+    min-width: 0;
+    overflow: hidden;
+    transition: width 0.3s;
+  }
+  .sidebar.sidebar-open {
+    width: 70%;
+    min-width: 180px;
+  }
+  body > .main-content,
+  body .sidebar.sidebar-open ~ .main-content {
+    margin-left: 0;
+    width: 100%;
+    max-width: 100vw;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    transition: none;
+  }
+  .formulario-iniciosesion,
+  .formulario-crearcuenta {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem 2rem 0.5rem;
+  }
+}
+
+/* Asegurar que la barra lateral esté por encima del contenido */
+.sidebar {
+  z-index: 2000;
+}

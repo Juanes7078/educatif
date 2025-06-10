@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educatif - Inicio</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="firebaseconect.js"></script>
+  <!-- Favicon opcional, agregar ruta si se tiene -->
+  <!-- <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon"> -->
+</head>
+<body>
+  <button id="sidebarToggle" class="sidebar-toggle" aria-label="Menú">&#9776;</button>
+  
+  <aside class="sidebar" id="sidebar">
+    <div class="profile-section">
+      <img id="profilePic" src="assets/default-profile.jpg" alt="Foto de perfil" class="profile-pic">
+      <div class="profile-info">
+        <span id="username">Usuario</span>
+        <span id="userHandle">@usuario</span>
+        <button id="editUsernameBtn" aria-label="Editar nombre">&#9998;</button>
+        <button id="editProfilePicBtn" aria-label="Cambiar foto">&#128247;</button>
+      </div>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link" data-page="home">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Inicio</span>
+      </a>
+      <a href="#" class="nav-link" data-page="explore">
+        <span class="nav-icon">🔍</span>
+        <span class="nav-label">Explorar</span>
+      </a>
+      <a href="events.html" class="nav-link" data-page="events">
+        <span class="nav-icon">📅</span>
+        <span class="nav-label">Eventos</span>
+      </a>
+      <a href="community.html" class="nav-link" data-page="community">
+        <span class="nav-icon">👥</span>
+        <span class="nav-label">Comunidades</span>
+      </a>
+      <a href="#" class="nav-link" data-page="more">
+        <span class="nav-icon">⋯</span>
+        <span class="nav-label">Mas</span>
+      </a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <h1 class="logo">educatif</h1>
+      <button id="darkModeToggle" aria-label="Modo oscuro" style="margin-left:1rem;font-size:1.3rem;background:none;border:none;cursor:pointer;">🌙</button>
+    </header>
+
+    <section class="post-box">
+      <img id="miniProfilePic" src="assets/default-profile.jpg" alt="Tu foto de perfil" class="profile-pic">
+      <textarea placeholder="¿Qué está pasando?" id="postText" maxlength="240" aria-label="Escribe tu publicación"></textarea>
+      <div class="post-actions">
+        <label for="mediaInput" class="input-file-label" tabindex="0">
+          <span>📎</span> Elegir archivo
+        </label>
+        <input type="file" id="mediaInput" accept="image/*,video/*" aria-label="Añadir multimedia">
+        <button id="submitPost" class="btn-primary">Publicar</button>
+      </div>
+    </section>
+
+    <section id="feed" class="feed-container" aria-live="polite">
+      <!-- Las publicaciones se cargarán aquí dinámicamente -->
+    </section>
+    <button id="clearFeedBtn" style="background:transparent;color:var(--muted-text);border:none;font-size:0.9rem;opacity:0.5;cursor:pointer;margin:10px auto 0 auto;display:block;">Borrar todo el feed</button>
+    
+  </main>
+
+  <!-- Modales -->
+  <div id="usernameModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="closeUsernameModal" aria-label="Cerrar">&times;</button>
+      <h3>Cambiar nombre de usuario</h3>
+      <input type="text" id="newUsername" placeholder="Nuevo nombre" aria-label="Nuevo nombre">
+      <button id="saveUsernameBtn" class="btn-primary">Guardar</button>
+    </div>
+  </div>
+
+  <div id="profilePicModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="closeProfilePicModal" aria-label="Cerrar">&times;</button>
+      <h3>Cambiar foto de perfil</h3>
+      <label for="newProfilePicInput" class="input-file-label" tabindex="0">
+        <span>📷</span> Elegir imagen
+      </label>
+      <input type="file" id="newProfilePicInput" accept="image/*" aria-label="Seleccionar imagen">
+      <button id="saveProfilePicBtn" class="btn-primary">Guardar</button>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+
+    <section style="margin-top:2rem; text-align:center;">
+      <button onclick="window.location.href='login.html'" style="padding:0.7rem 2rem; font-size:1rem; background:var(--primary-color); color:#fff; border:none; border-radius:1.5rem; cursor:pointer;">
+        Ir a Iniciar Sesión
+      </button>
+    </section>
+  </main>
+
+</body>
+</html>

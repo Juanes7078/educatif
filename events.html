@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educatif - Events</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .events-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .event-card {
+      background: #fff9ec;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      border: 1px solid #e6ecf0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    .event-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #1d3b2a;
+      margin-bottom: 8px;
+    }
+    
+    .event-details {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: #657786;
+      font-size: 0.95rem;
+    }
+    
+    .event-date {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .event-location {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .event-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 12px;
+    }
+    
+    .event-actions button {
+      padding: 6px 16px;
+      font-size: 0.9rem;
+    }
+
+    /* Scrollbar personalizado */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: aqua;
+      border-radius: 100px;
+    }
+    body.dark-mode ::-webkit-scrollbar-thumb {
+      background-color: #5ad2c2;
+    }
+  </style>
+</head>
+<body>
+  <button id="sidebarToggle" class="sidebar-toggle" aria-label="Menú">&#9776;</button>
+  
+  <aside class="sidebar" id="sidebar">
+    <div class="profile-section">
+      <img id="profilePic" src="assets/default-profile.jpg" alt="Foto de perfil" class="profile-pic">
+      <div class="profile-info">
+        <span id="username">Usuario</span>
+        <span id="userHandle">@usuario</span>
+        <button id="editUsernameBtn" aria-label="Editar nombre">&#9998;</button>
+        <button id="editProfilePicBtn" aria-label="Cambiar foto">&#128247;</button>
+      </div>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link" data-page="home">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Inicio</span>
+      </a>
+      <a href="#" class="nav-link" data-page="explore">
+        <span class="nav-icon">🔍</span>
+        <span class="nav-label">Explorar</span>
+      </a>
+      <a href="events.html" class="nav-link" data-page="events">
+        <span class="nav-icon">📅</span>
+        <span class="nav-label">Eventos</span>
+      </a>
+      <a href="community.html" class="nav-link active" data-page="community">
+        <span class="nav-icon">👥</span>
+        <span class="nav-label">Comunidades</span>
+      </a>
+      <a href="#" class="nav-link" data-page="more">
+        <span class="nav-icon">⋯</span>
+        <span class="nav-label">Mas</span>
+      </a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <span class="logo" style="font-weight:bold;font-size:1.5rem;color:#1d3b2a;letter-spacing:1px;">educatif</span>
+      <button id="darkModeToggle" aria-label="Modo oscuro" style="margin-left:1rem;font-size:1.3rem;background:none;border:none;cursor:pointer;">🌙</button>
+    </header>
+
+    <div class="events-container">
+      <div class="event-card">
+        <div class="event-title">Taller de Programación</div>
+        <div class="event-details">
+          <div class="event-date">📅 15 Junio, 2023 | 14:00 - 16:00</div>
+          <div class="event-location">📍 Aula 203, Edificio Principal</div>
+        </div>
+        <div class="event-actions">
+          <button>Asistiré</button>
+        </div>
+      </div>
+      
+      <div class="event-card">
+        <div class="event-title">Charla sobre Inteligencia Artificial</div>
+        <div class="event-details">
+          <div class="event-date">📅 20 Junio, 2023 | 10:00 - 12:00</div>
+          <div class="event-location">📍 Auditorio Central</div>
+        </div>
+        <div class="event-actions">
+          <button>Asistiré</button>
+        </div>
+      </div>
+      
+      <div class="event-card">
+        <div class="event-title">Workshop de Diseño UX/UI</div>
+        <div class="event-details">
+          <div class="event-date">📅 25 Junio, 2023 | 16:00 - 18:00</div>
+          <div class="event-location">📍 Laboratorio de Diseño</div>
+        </div>
+        <div class="event-actions">
+          <button>Asistiré</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="script.js"></script>
+  </main>
+
+
+
+</body>
+</html>

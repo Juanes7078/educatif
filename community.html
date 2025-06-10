@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educatif - Comunidades</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Estilos específicos para comunidades */
+    .community-header {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      background: var(--card-color);
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .community-tabs {
+      display: flex;
+      width: 100%;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .community-tab {
+      flex: 1;
+      text-align: center;
+      padding: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.2s ease;
+    }
+    
+    .community-tab:hover {
+      background: rgba(0,0,0,0.05);
+    }
+    
+    .community-tab.active {
+      color: var(--primary-color);
+    }
+    
+    .community-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+    
+    .community-card {
+      display: flex;
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      transition: background 0.2s ease;
+    }
+    
+    .community-card:hover {
+      background: rgba(0,0,0,0.02);
+    }
+    
+    .community-cover {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin-right: 1rem;
+      border: 1px solid var(--border-color);
+    }
+    
+    .community-info {
+      flex: 1;
+    }
+    
+    .community-name {
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+    }
+    
+    .community-members {
+      color: var(--muted-text);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .community-description {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .join-button {
+      padding: 0.25rem 1rem;
+      border-radius: 1.5rem;
+      font-size: 0.9rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .joined {
+      background: var(--primary-color);
+      color: white;
+    }
+    
+    .not-joined {
+      background: transparent;
+      border: 1px solid var(--border-color);
+    }
+    
+    .trending-communities {
+      background: var(--card-color);
+      border-radius: 1rem;
+      margin: 1rem;
+      padding: 1rem;
+    }
+    
+    .trending-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    
+    /* Scrollbar personalizado */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: aqua;
+      border-radius: 100px;
+    }
+    body.dark-mode ::-webkit-scrollbar-thumb {
+      background-color: #5ad2c2;
+    }
+  </style>
+</head>
+<body>
+  <button id="sidebarToggle" class="sidebar-toggle" aria-label="Menú">&#9776;</button>
+  
+  <aside class="sidebar" id="sidebar">
+    <div class="profile-section">
+      <img id="profilePic" src="assets/default-profile.jpg" alt="Foto de perfil" class="profile-pic">
+      <div class="profile-info">
+        <span id="username">Usuario</span>
+        <span id="userHandle">@usuario</span>
+        <button id="editUsernameBtn" aria-label="Editar nombre">&#9998;</button>
+        <button id="editProfilePicBtn" aria-label="Cambiar foto">&#128247;</button>
+      </div>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link" data-page="home">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Inicio</span>
+      </a>
+      <a href="#" class="nav-link" data-page="explore">
+        <span class="nav-icon">🔍</span>
+        <span class="nav-label">Explorar</span>
+      </a>
+      <a href="events.html" class="nav-link" data-page="events">
+        <span class="nav-icon">📅</span>
+        <span class="nav-label">Eventos</span>
+      </a>
+      <a href="community.html" class="nav-link active" data-page="community">
+        <span class="nav-icon">👥</span>
+        <span class="nav-label">Comunidaes</span>
+      </a>
+      <a href="#" class="nav-link" data-page="more">
+        <span class="nav-icon">⋯</span>
+        <span class="nav-label">Mas</span>
+      </a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <header class="community-header">
+      <h1 style="font-size: 1.25rem; font-weight: bold;">Comunidades</h1>
+      <div style="display:flex;align-items:center;gap:0.5rem;">
+        <button class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+          Crear comunidad
+        </button>
+        <button id="darkModeToggle" aria-label="Modo oscuro" style="font-size:1.3rem;background:none;border:none;cursor:pointer;">🌙</button>
+      </div>
+    </header>
+    
+    <div class="community-tabs">
+      <div class="community-tab active">Para ti</div>
+      <div class="community-tab">Tendencias</div>
+      <div class="community-tab">Descubrir</div>
+      <div class="community-tab">Tus comunidades</div>
+    </div>
+    
+    <div class="trending-communities">
+      <div class="trending-title">Comunidades populares</div>
+      
+      <div class="community-card">
+        <img src="https://source.unsplash.com/random/300x300/?book" alt="Comunidad de libros" class="community-cover">
+        <div class="community-info">
+          <div class="community-name">Amantes de la lectura</div>
+          <div class="community-members">15.2K miembros</div>
+          <div class="community-description">
+            Un espacio para compartir nuestros libros favoritos, reseñas y descubrir nuevas lecturas. Todos los géneros son bienvenidos.
+          </div>
+          <button class="join-button joined">Unido</button>
+        </div>
+      </div>
+      
+      <div class="community-card">
+        <img src="https://source.unsplash.com/random/300x300/?technology" alt="Comunidad de tecnología" class="community-cover">
+        <div class="community-info">
+          <div class="community-name">Tecnología Actual</div>
+          <div class="community-members">32.7K miembros</div>
+          <div class="community-description">
+            Todo sobre las últimas tendencias tecnológicas, gadgets, IA y desarrollo de software. Comparte tus conocimientos y aprende con nosotros.
+          </div>
+          <button class="join-button not-joined">Unirse</button>
+        </div>
+      </div>
+      
+      <div class="community-card">
+        <img src="https://source.unsplash.com/random/300x300/?travel" alt="Comunidad de viajes" class="community-cover">
+        <div class="community-info">
+          <div class="community-name">Viajeros del Mundo</div>
+          <div class="community-members">28.4K miembros</div>
+          <div class="community-description">
+            Comparte tus experiencias de viaje, fotos y consejos. Desde mochileros hasta viajes de lujo, todos los estilos son bienvenidos.
+          </div>
+          <button class="join-button not-joined">Unirse</button>
+        </div>
+      </div>
+      
+      <div class="community-card">
+        <img src="https://source.unsplash.com/random/300x300/?food" alt="Comunidad de cocina" class="community-cover">
+        <div class="community-info">
+          <div class="community-name">Cocina Creativa</div>
+          <div class="community-members">19.8K miembros</div>
+          <div class="community-description">
+            Recetas, técnicas culinarias y todo sobre gastronomía. Desde principiantes hasta chefs profesionales, todos pueden compartir su pasión por la cocina.
+          </div>
+          <button class="join-button joined">Unido</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="script.js"></script>
+  </main>
+
+
+  <script>
+    // Manejo de pestañas
+    document.querySelectorAll('.community-tab').forEach(tab => {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.community-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+    // Manejo de botones de unirse
+    document.querySelectorAll('.join-button').forEach(button => {
+      button.addEventListener('click', function() {
+        this.classList.toggle('joined');
+        this.classList.toggle('not-joined');
+        this.textContent = this.classList.contains('joined') ? 'Unido' : 'Unirse';
+      });
+    });
+  </script>
+</body>
+</html>
